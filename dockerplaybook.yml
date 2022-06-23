@@ -20,7 +20,7 @@
           yum:
             name: yum-utils
             state: present
-         - name: Add docker repo
+        - name: Add docker repo
           yum_repository:
             name: epel
             description: EPEL YUM repo
