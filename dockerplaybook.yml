@@ -20,6 +20,11 @@
           yum:
             name: yum-utils
             state: present
+         - name: Add docker repo
+          yum_repository:
+            name: epel
+            description: EPEL YUM repo
+            baseurl: https://download.docker.com/linux/rhel/docker-ce.repo
     
 
 
