@@ -29,8 +29,24 @@
           rpm_key:
             key: /path/to/RPM-GPG-KEY.dag.txt
             fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35s
-        - name: Installing Docker Software...
-          command: "yum install docker-ce"
+        - name: Download docker engine
+          yum: 
+            name: docker-ce 
+            state: latest 
+            update_cache: true 
+        - name: Start docker
+          service:
+            name: docker 
+            state: restarted
+        - name: download the docker image
+          docker_image:
+            name: "{{container_image}}"
+            source: pull 
+        - name: run the docker container 
+          docker_container:
+            name: "{{container_name}}"
+            image: "{{container_image}}"
+            command: "{{default_container_command}}"
     
 
 
