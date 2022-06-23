@@ -25,6 +25,15 @@
             name: epel
             description: EPEL YUM repo
             baseurl: https://download.docker.com/linux/rhel/docker-ce.repo
+        - name: Adding GPG key
+          rpm_key:
+            key: /path/to/RPM-GPG-KEY.dag.txt
+            fingerprint: 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35s
+        - name: Download docker engine
+          yum: 
+            name: docker-ce 
+            state: latest 
+            update_cache: true 
     
 
 
