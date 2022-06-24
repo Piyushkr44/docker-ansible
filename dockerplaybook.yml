@@ -22,8 +22,8 @@
             state: present
         - name: Add docker repo
           yum_repository:
-            name: epel
-            description: EPEL YUM repo
+            name: docker
+            description: Docker repo
             baseurl: https://download.docker.com/linux/rhel/docker-ce.repo
         - name: Adding GPG key
           rpm_key:
@@ -37,7 +37,7 @@
         - name: Start docker
           service:
             name: docker 
-            state: restarted
+            state: started
         - name: download the docker image
           docker_image:
             name: "{{container_image}}"
